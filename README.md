@@ -8,6 +8,39 @@ Dataset
 
 The dataset cybersecurity_intrusion_data.csv contains various features related to network sessions, including network_packet_size, protocol_type, login_attempts, session_duration, encryption_used, ip_reputation_score, failed_logins, browser_type, unusual_time_access, and attack_detected (the target variable).
 Dal data exploration (head, info, describe).
+
+Dependencies
+
+To run this notebook, you will need the following Python libraries:
+
+   pandas
+    numpy
+    scikit-learn
+    tensorflow (for Keras)
+    keras-bert (if BERT specific features were planned/used, though not directly in the final model shown)
+    keras-rectified-adam (if RAdam optimizer specific features were planned/used, though not directly in the final model shown)
+
+You can install these using pip:
+
+pip install pandas numpy scikit-learn tensorflow keras-bert keras-rectified-adam
+
+Setup and Usage
+
+   Clone the Repository (if applicable):
+
+   git clone <your-repository-url>
+    cd <your-repository-name>
+
+   Upload the Dataset: Ensure the cybersecurity_intrusion_data.csv file is in the same directory as your Jupyter/Colab notebook, or update the path in the code.
+
+   Run the Notebook: Open and run the Jupyter Notebook or Google Colab notebook cells sequentially. The notebook performs the following steps:
+        Loads the dataset.
+        Performs initial data exploration (head, info, describe).
+        Drops irrelevant columns (session_id, encryption_used, browser_type, protocol_type).
+        Splits the data into training and testing sets.
+        Trains several classification models: Logistic Regression, Decision Tree, K-Nearest Neighbors (KNN), Random Forest, and a simple Artificial Neural Network (ANN) using Keras.
+        Evaluates each model and prints its accuracy, classification report, and confusion matrix.
+        Saves the trained scikit-learn models as .pkl files.
 Drops irrelevant columns (session_id, encryption_used, browser_type, protocol_type).
 Splits the data into training and testing sets.
 Trains several classification models: Logistic Regression, Decision Tree, K-Nearest Neighbors (KNN), Random Forest, and a simple Artificial Neural Network (ANN) using Keras. Evaluates each model and prints its accuracy, classification report, and confusion matrix.
