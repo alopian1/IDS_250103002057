@@ -78,3 +78,44 @@ for name, model in models.items():
     pickle.dump(model, open(filename, "wb"))
     print(f"Saved: {filename}")
 
+# 1. Predict
+y_pred = model.predict(X_test)
+
+# 2. Confusion Matrix
+from sklearn.metrics import confusion_matrix, classification_report
+cm = confusion_matrix(y_test, y_pred)
+
+tn, fp, fn, tp = cm.ravel()
+
+print("TP:", tp)
+print("FP:", fp)
+print("TN:", tn)
+print("FN:", fn)
+
+# 3. Classification Report
+print(classification_report(y_test, y_pred))
+
+# 4. Plotting
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.figure(figsize=(6,5))
+plt.imshow(cm, interpolation='nearest')
+plt.title("Confusion Matrix")
+plt.colorbar()
+
+classes = ['Normal', 'Attack']
+tick_marks = np.arange(len(classes))
+plt.xticks(tick_marks, classes)
+plt.yticks(tick_marks, classes)
+
+for i in range(2):
+    for j in range(2):
+        plt.text(j, i, cm[i,j], ha='center', va='center', color='red')
+
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.tight_layout()
+plt.show()
+
+
